@@ -1,6 +1,39 @@
+# HTTP(S) 和 SOCKS4(A)/SOCKS5 代理服务共用一个端口
 mixed-port: 7890
+# 设置为 true 以允许来自其他 LAN IP 地址的连接
 allow-lan: true
+# 仅当 `allow-lan` 为 `true` 时有效
+# '*': 绑定所有 IP 地址
+# 192.168.122.11: 绑定单个 IPv4 地址
+# "[aaaa::a8aa:ff:fe09:57d8]": 绑定单个 IPv6 地址
 bind-address: '*'
+# Clash 路由工作模式
+# rule: 基于规则的数据包路由
+# global: 所有数据包将被转发到单个节点
+# direct: 直接将数据包转发到互联网
 mode: rule
+# 默认情况下, Clash 将日志打印到 STDOUT
+# 日志级别: info / warning / error / debug / silent
 log-level: info
+# RESTful Web API 监听地址
 external-controller: '127.0.0.1:9090'
+# 鉴权的方式为在 Http Header 中加入 Authorization: Bearer ${secret}
+secret: c4db2bdc-0623-425a-a6f1-57568e5caa52
+# 本地 SOCKS5/HTTP(S) 代理服务的认证
+# authentication:
+#  - "user1:pass1"
+#  - "user2:pass2"
+
+# 配置目录的相对路径或静态 Web 资源目录的绝对路径. Clash core 将在
+# `http://{{external-controller}}/ui` 中提供服务.
+# external-ui: folder
+
+# 用于DNS服务器和连接建立的静态主机 (如/etc/hosts) .
+# 支持通配符主机名 (例如 *.clash.dev, *.foo.*.example.com)
+# 非通配符域名优先级高于通配符域名
+# 例如 foo.example.com > *.example.com > .example.com
+# P.S. +.foo.com 等于 .foo.com 和 foo.com
+# hosts:
+# '*.clash.dev': 127.0.0.1
+# '.dev': 127.0.0.1
+# 'alpha.clash.dev': '::1'
