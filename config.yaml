@@ -16,7 +16,8 @@ mode: rule
 # 日志级别: info / warning / error / debug / silent
 log-level: info
 # RESTful Web API 监听地址
-external-controller: '127.0.0.1:9090'
+#设置为0.0.0.0才可以允许所有地址访问
+external-controller: '0.0.0.0:9090'
 # 鉴权的方式为在 Http Header 中加入 Authorization: Bearer ${secret}
 secret: c4db2bdc-0623-425a-a6f1-57568e5caa52
 # 本地 SOCKS5/HTTP(S) 代理服务的认证
